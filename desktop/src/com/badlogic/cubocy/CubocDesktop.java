@@ -1,16 +1,15 @@
-
 package com.badlogic.cubocy;
 
-import com.badlogic.gdx.Application;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 
+// Please note that on macOS your application needs to be started with the -XstartOnFirstThread JVM argument
 public class CubocDesktop {
-	public static void main (String[] argv) {
-		new LwjglApplication(new Cubocy(), "Cubocy", 480, 320);
-
-		// After creating the Application instance we can set the log level to
-		// show the output of calls to Gdx.app.debug
-		Gdx.app.setLogLevel(Application.LOG_DEBUG);
+	public static void main(String[] arg) {
+		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
+		config.setForegroundFPS(60);
+		config.setTitle("Cubocy");
+		config.setWindowedMode(480, 320);
+		new Lwjgl3Application(new Cubocy(), config);
 	}
 }
